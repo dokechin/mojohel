@@ -4,6 +4,12 @@ use File::Temp qw/tempfile/;
 use HTML::Entities;
 
 
+sub welcom {
+  my $self = shift;
+  $self
+
+
+}
 # This action will render a template
 sub convert {
   my $self = shift;
