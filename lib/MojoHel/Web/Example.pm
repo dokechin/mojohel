@@ -30,8 +30,8 @@ sub convert {
   close $xml;
   close $ep;
 
-  my $ret = system("tidyp -o $xml -asxhtml -wrap 0 $html");
-  $ret = system("xsltproc test.xsl $xml > $ep");
+  my $ret = system("tidyp -o $xml --doctype -asxhtml -wrap 0 $html");
+  $ret = system("xsltproc mojohel.xsl $xml > $ep");
 # $ret = system("cp  $xml  $ep");
 
   my $fh_ep;
@@ -39,8 +39,9 @@ sub convert {
   my $ep_text = '';
     while(my $line = <$fh_ep>) {
     chomp $line;
-    $ep_text = $ep_text . $line;
+    $ep_text = $ep_text . encode_entities($line). "<br/>";
   }
+  close($fh_ep);
 
   system("/bin/rm -f $html");
   system("/bin/rm -f $xml");
@@ -48,7 +49,7 @@ sub convert {
 
   # Render template "example/welcome.html.ep" with message
   $self->render_json({
-    ep => encode_entities($ep_text)});
+    ep => $ep_text});
 
 }
 1;

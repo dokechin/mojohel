@@ -3,7 +3,7 @@ $(document).ready(function(){
 $("#convert").click(function(){
     source = $("#source").html();
     $.ajax({
-    url: 'http://mojohel.dokechin.com/convert',
+    url: 'http://localhost:3000/convert',
     type: 'POST',
     data: {
         html: source,
