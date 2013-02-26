@@ -31,7 +31,7 @@ sub convert {
   close $ep;
 
   my $ret = system("tidyp -o $xml --doctype -asxhtml -wrap 0 $html");
-  $ret = system("xsltproc mojohel.xsl $xml > $ep");
+  $ret = system("xsltproc mojohel.xsl --novalid $xml > $ep");
 # $ret = system("cp  $xml  $ep");
 
   my $fh_ep;
@@ -39,7 +39,7 @@ sub convert {
   my $ep_text = '';
     while(my $line = <$fh_ep>) {
     chomp $line;
-    $ep_text = $ep_text . encode_entities($line). "<br/>";
+    $ep_text = $ep_text . encode_entities($line). "\n";
   }
   close($fh_ep);
 
