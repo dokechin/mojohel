@@ -30,16 +30,22 @@ sub convert {
   close $xml;
   close $ep;
 
-  my $ret = system("tidyp -o $xml --doctype -asxhtml -wrap 0 $html");
-  $ret = system("xsltproc mojohel.xsl --novalid $xml > $ep");
+  my $ret = system("/usr/local/bin/tidyp -o $xml --doctype -asxhtml -wrap 0 $html");
+  $ret = system("/usr/local/bin/xsltproc mojohel.xsl --novalid $xml > $ep");
 # $ret = system("cp  $xml  $ep");
 
   my $fh_ep;
+  my $start = 0;
   open ($fh_ep , "<" , $ep);
   my $ep_text = '';
     while(my $line = <$fh_ep>) {
     chomp $line;
-    $ep_text = $ep_text . encode_entities($line). "\n";
+    if ($line =~ /<%=/ ) {
+        $start = 1;
+    }
+    if ($start == 1){
+        $ep_text = $ep_text . encode_entities($line). "\n";
+    }
   }
   close($fh_ep);
 
