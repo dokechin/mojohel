@@ -12,7 +12,7 @@ $(document).ready(function(){
 $("#convert").click(function(){
     source = $("#source").html();
     $.ajax({
-    url: 'http://mojohel.dokechin.com/convert',
+    url: '/convert',
     type: 'POST',
     data: {
         html: source,

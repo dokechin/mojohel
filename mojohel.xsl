@@ -42,7 +42,7 @@
   </xsl:template>
 
 <xsl:template match="h:select">
-  <xsl:text disable-output-escaping = "yes" >&lt;%= select_field 'name' => (class => "</xsl:text><xsl:value-of select="@class" /><xsl:text disable-output-escaping = "yes" >") => [ qw/ </xsl:text><xsl:for-each select="h:option"><xsl:value-of select="." /><xsl:text> </xsl:text></xsl:for-each><xsl:text disable-output-escaping = "yes" > / ] %&gt; </xsl:text>
+  <xsl:text disable-output-escaping = "yes" >&lt;%= select_field 'name' => [ qw/ </xsl:text><xsl:for-each select="h:option"><xsl:value-of select="." /><xsl:text> </xsl:text></xsl:for-each><xsl:text disable-output-escaping = "yes" > / ]  => (class => "</xsl:text><xsl:value-of select="@class" /><xsl:text disable-output-escaping = "yes" >") %&gt; </xsl:text>
   </xsl:template>
 
 <xsl:template match="@*|node()" priority="-0.5">

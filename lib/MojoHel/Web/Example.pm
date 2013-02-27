@@ -30,7 +30,7 @@ sub convert {
   close $xml;
   close $ep;
 
-  my $ret = system("/usr/local/bin/tidyp -o $xml --doctype -asxhtml -wrap 0 $html");
+  my $ret = system("/usr/local/bin/tidyp -utf8 -o $xml --doctype -asxhtml -wrap 0 $html");
   $ret = system("/usr/local/bin/xsltproc mojohel.xsl --novalid $xml > $ep");
 # $ret = system("cp  $xml  $ep");
 
@@ -49,9 +49,9 @@ sub convert {
   }
   close($fh_ep);
 
-  system("/bin/rm -f $html");
-  system("/bin/rm -f $xml");
-  system("/bin/rm -f $ep");
+#  system("/bin/rm -f $html");
+#  system("/bin/rm -f $xml");
+#  system("/bin/rm -f $ep");
 
   # Render template "example/welcome.html.ep" with message
   $self->render_json({
