@@ -2,7 +2,7 @@ package MojoHel::Web::Example;
 use Mojo::Base 'Mojolicious::Controller';
 use File::Temp qw/tempfile/;
 use HTML::Entities;
-
+use Encode qw(encode decode :fallbacks);
 
 sub welcom {
   my $self = shift;
@@ -44,14 +44,17 @@ sub convert {
         $start = 1;
     }
     if ($start == 1){
-        $ep_text = $ep_text . encode_entities($line). "\n";
+
+        my $line = decode('utf8', $line);
+        $ep_text = $ep_text . encode_entities($line,"<>&'\""). "\n";
+
     }
   }
   close($fh_ep);
 
-#  system("/bin/rm -f $html");
-#  system("/bin/rm -f $xml");
-#  system("/bin/rm -f $ep");
+  system("/bin/rm -f $html");
+  system("/bin/rm -f $xml");
+  system("/bin/rm -f $ep");
 
   # Render template "example/welcome.html.ep" with message
   $self->render_json({
