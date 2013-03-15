@@ -22,7 +22,20 @@
 <xsl:template match="h:form" priority="1.0">
   <xsl:text disable-output-escaping = "yes" >&lt;%= form_for '/newentry' => (method => "post") => (class => "</xsl:text><xsl:value-of select="@class" /><xsl:text disable-output-escaping = "yes" >") => begin %&gt;</xsl:text>
           <xsl:apply-templates />
-<xsl:text disable-output-escaping = "yes" >&lt;% end %&gt;</xsl:text>
+<xsl:text disable-output-escaping = "yes" >&lt;% end %&gt;
+% if ($self->stash->{error_messages}) {
+&lt;ul&gt;
+% for my $message ( @{$self->stash->{error_messages}} ) {
+&lt;li&gt;&lt;%= $message %&gt;&lt;/li&gt;
+% }
+&lt;/ul&gt;
+% }</xsl:text>
+</xsl:template>
+
+<xsl:template match="h:div[@class='control-group']">
+  <xsl:text disable-output-escaping = "yes" >&lt;div class ="</xsl:text><xsl:value-of select="@class" /><xsl:text disable-output-escaping = "yes"> &lt;% if ($self->stash->{errors} &amp;&amp; $self-&gt;stash-&gt;{errors}-&gt;{"name"}) {%&gt;&lt;%= "error" %&gt;&lt;% } %&gt;"></xsl:text>
+  <xsl:apply-templates />
+  <xsl:text disable-output-escaping = "yes" >&lt;/div&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="h:input[@type='text']">
