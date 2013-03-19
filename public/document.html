@@ -33,6 +33,7 @@
 
 	<li><a href="#mojohel___twitter_bootstrap_form_builder_customized_for_mojolicious">MojoHel - Twitter BootStrap form builder customized for Mojolicious</a></li>
 	<li><a href="#description">Description</a></li>
+	<li><a href="#example">Example</a></li>
 </ul>
 
 <hr name="index" />
@@ -41,8 +42,6 @@
 
 <p>
 </p>
-<hr />
-<h1 class="title"><a name="mojohel___twitter_bootstrap_form_builder_customized_for_mojolicious">MojoHel - Twitter BootStrap form builder customized for Mojolicious</a></h1>
 <p>
 </p>
 <hr />
@@ -53,6 +52,100 @@ The Bootstrap Form Builer can output HTML source from the form you configured, o
 has additional function to convert HTML source to the Mojolicious template file format having sufix ep.
 You can use the outputed ep source to paste your application template files, so you are
 able to configure forms very quickly and easily.</p>
+<p>
+</p>
+<hr />
+<h1><a name="example">Example</a></h1>
+<dl>
+<dt><strong><a name="mojo_generate_app" class="item">mojo generate app</a></strong></dt>
+
+<dd>
+<p>Mojolicious has command to create a application skelton, <a href="#mojo_generate_app"><code>mojo generate app</code></a>.</p>
+<pre>
+    mojo generate app SampleApp::Web
+    
+    sample_app_web/
+    |-- lib
+    |   `-- SampleApp
+    |       |-- Web
+    |       |   `-- Example.pm
+    |       `-- Web.pm
+    |-- log
+    |-- public
+    |   `-- index.html
+    |-- script
+    |   `-- sample_app_web
+    |-- t
+    |   `-- basic.t
+    `-- templates
+        |-- example
+        |   `-- welcome.html.ep
+        `-- layouts
+            `-- default.html.ep</pre>
+</dd>
+<dt><strong><a name="mojo_generate_bootstrap" class="item">mojo generate bootstrap</a></strong></dt>
+
+<dd>
+<p>Convinient CPAN module is exists for using Twitter BootStrap in Mojolicious, <code>Mojolicious::Command::generate::bootstrap</code>,
+<a href="https://metacpan.org/module/Mojolicious::Command::generate::bootstrap">https://metacpan.org/module/Mojolicious::Command::generate::bootstrap</a>.
+After module installed by cpanm command, and you can deploy Twitter Bootstrap library into your Mojolicous-App by the command.</p>
+<pre>
+    cpanm Mojolicious::Command::generate::bootstrap
+    cd sample_app_web
+    mojo generate bootstrap
+    
+    sample_app_web/
+    |-- lib
+    |   `-- SampleApp
+    |       |-- Web
+    |       |   `-- Example.pm
+    |       `-- Web.pm
+    |-- log
+    |-- public
+    |   |-- css
+    |   |   `-- bootstrap.min.css
+    |   |-- img
+    |   |   |-- glyphicons-halflings.png
+    |   |   `-- glyphicons-halflings-white.png
+    |   |-- index.html
+    |   `-- js
+    |       `-- bootstrap.min.js
+    |-- script
+    |   `-- sample_app_web
+    |-- t
+    |   `-- basic.t
+    `-- templates
+        |-- example
+        |   `-- welcome.html.ep
+        `-- layouts
+            |-- bootstrap.html.ep
+            `-- default.html.ep</pre>
+<p>Twitter Bootstrap library files is bootstrap.min.css and 2 png files, and bootstrap.min.js file.
+In the directory layouts, bootstrap.html.ep is the layout file that contains bootstrap library paths.
+So you can use bootstrap only by renaming layout section from default to bootstrap.</p>
+<pre>
+    before source</pre>
+<pre>
+    % layout 'default';
+    % title 'Welcome';
+    &lt;h2&gt;&lt;%= $message %&gt;&lt;/h2&gt;
+    This page was generated from the template &quot;templates/example/welcome.html.ep&quot;
+    and the layout &quot;templates/layouts/default.html.ep&quot;,
+    &lt;a href=&quot;&lt;%== url_for %&gt;&quot;&gt;click here&lt;/a&gt; to reload the page or
+    &lt;a href=&quot;/index.html&quot;&gt;here&lt;/a&gt; to move forward to a static page.
+    
+    after source
+    
+    % layout 'bootstrap';
+    % title 'Welcome';
+    &lt;h2&gt;&lt;%= $message %&gt;&lt;/h2&gt;
+    This page was generated from the template &quot;templates/example/welcome.html.ep&quot;
+    and the layout &quot;templates/layouts/default.html.ep&quot;,
+    &lt;a href=&quot;&lt;%== url_for %&gt;&quot;&gt;click here&lt;/a&gt; to reload the page or
+    &lt;a href=&quot;/index.html&quot;&gt;here&lt;/a&gt; to move forward to a static page.</pre>
+</dd>
+</dl>
+
 
 </body>
 

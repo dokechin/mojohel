@@ -10,7 +10,7 @@ function htmlUnescape(html)
 $(document).ready(function(){
 
 $("#convert").click(function(){
-    source = $("#source").val();
+    source = $("#render").val();
     $.ajax({
     url: '/convert',
     type: 'POST',
