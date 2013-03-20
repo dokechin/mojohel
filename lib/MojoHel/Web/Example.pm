@@ -46,7 +46,9 @@ sub convert {
     if ($start == 1){
 
         my $line = decode('utf8', $line);
-        $ep_text = $ep_text . encode_entities($line,"<>&'\""). "\n";
+        my $encode_str = encode_entities($line,"<>&'\"");
+        $encode_str =~ s/&#39;/&#x27;/g;
+        $ep_text = $ep_text . $encode_str . "\n";
 
     }
   }
