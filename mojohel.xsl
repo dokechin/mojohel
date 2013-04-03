@@ -33,7 +33,7 @@
 </xsl:template>
 
 <xsl:template match="h:div[@class='control-group']">
-  <xsl:text disable-output-escaping = "yes" >&lt;div class ="</xsl:text><xsl:value-of select="@class" /><xsl:text disable-output-escaping = "yes"> &lt;% if ($self->stash->{errors} &amp;&amp; $self-&gt;stash-&gt;{errors}-&gt;{"</xsl:text><xsl:value-of select="controls/input/@name" /><xsl:text disable-output-escaping = "yes">"}) {%&gt;&lt;%= "error" %&gt;&lt;% } %&gt;"></xsl:text>
+  <xsl:text disable-output-escaping = "yes" >&lt;div class ="</xsl:text><xsl:value-of select="@class" /><xsl:text disable-output-escaping = "yes"> &lt;% if ($self->stash->{errors} &amp;&amp; $self-&gt;stash-&gt;{errors}-&gt;{"</xsl:text><xsl:value-of select="h:div//@name" /><xsl:text disable-output-escaping = "yes">"}) {%&gt;&lt;%= "error" %&gt;&lt;% } %&gt;"></xsl:text>
   <xsl:apply-templates />
   <xsl:text disable-output-escaping = "yes" >&lt;/div&gt;</xsl:text>
 </xsl:template>
