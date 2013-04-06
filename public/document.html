@@ -1,152 +1,118 @@
-<?xml version="1.0" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>MojoHel - Twitter BootStrap form builder customized for Mojolicious</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rev="made" href="mailto:rurban@x-ray.at" />
-<meta name="description" content="MojoHel is the Mojolicious Form Builer" />
-<meta name="keywords" content="Mojolicous,Bootstrap,Form" />
-<script type="text/javascript">
+<h1>MojoHel - Twitter BootStrap form builder customized for Mojolicious</h1>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35535708-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body style="background-color: white">
-
-
-<!-- INDEX BEGIN -->
-<div name="index">
-<p><a name="__index__"></a></p>
-
-<ul>
-
-	<li><a href="#mojohel___twitter_bootstrap_form_builder_customized_for_mojolicious">MojoHel - Twitter BootStrap form builder customized for Mojolicious</a></li>
-	<li><a href="#description">Description</a></li>
-	<li><a href="#example">Example</a></li>
-</ul>
-
-<hr name="index" />
-</div>
-<!-- INDEX END -->
-
-<p>
-</p>
-<p>
-</p>
 <hr />
-<h1><a name="description">Description</a></h1>
-<p>MojoHel(<a href="http://mojohel.dokechin.com">http://mojohel.dokechin.com</a>) is the drag and drop type form building tool customized for Mojolicious.
-This product had forked from <code>Bootstrap Form Builder</code>(<a href="http://bootstrap-forms.heroku.com/">http://bootstrap-forms.heroku.com/</a>).
+
+<h2>Description</h2>
+
+<p><a href="http://mojohel.dokechin.com">MojoHel</a> is the drag and drop type form building tool customized for Mojolicious.
+This product had forked from <a href="http://bootstrap-forms.heroku.com/">Bootstrap Form Builder</a>.
 The Bootstrap Form Builer can output HTML source from the form you configured, on the other MojoHel
 has additional function to convert HTML source to the Mojolicious template file format having sufix ep.
 You can use the outputed ep source to paste your application template files, so you are
 able to configure forms very quickly and easily.</p>
-<p>
-</p>
-<hr />
-<h1><a name="example">Example</a></h1>
-<dl>
-<dt><strong><a name="mojo_generate_app" class="item">mojo generate app</a></strong></dt>
 
-<dd>
-<p>Mojolicious has command to create a application skelton, <a href="#mojo_generate_app"><code>mojo generate app</code></a>.</p>
-<pre>
-    mojo generate app SampleApp::Web
-    
-    sample_app_web/
-    |-- lib
-    |   `-- SampleApp
-    |       |-- Web
-    |       |   `-- Example.pm
-    |       `-- Web.pm
-    |-- log
-    |-- public
-    |   `-- index.html
-    |-- script
-    |   `-- sample_app_web
-    |-- t
-    |   `-- basic.t
-    `-- templates
-        |-- example
-        |   `-- welcome.html.ep
-        `-- layouts
-            `-- default.html.ep</pre>
-</dd>
-<dt><strong><a name="mojo_generate_bootstrap" class="item">mojo generate bootstrap</a></strong></dt>
+<h2>Example</h2>
 
-<dd>
-<p>Convinient CPAN module is exists for using Twitter BootStrap in Mojolicious, <code>Mojolicious::Command::generate::bootstrap</code>,
-<a href="https://metacpan.org/module/Mojolicious::Command::generate::bootstrap">https://metacpan.org/module/Mojolicious::Command::generate::bootstrap</a>.
+<h3>mojo generate app</h3>
+
+<p>Mojolicious has command to create a application skelton, C<mojo generate app>.</p>
+
+<pre><code>mojo generate app SampleApp::Web
+
+sample_app_web/
+|-- lib
+|   `-- SampleApp
+|       |-- Web
+|       |   `-- Example.pm
+|       `-- Web.pm
+|-- log
+|-- public
+|   `-- index.html
+|-- script
+|   `-- sample_app_web
+|-- t
+|   `-- basic.t
+`-- templates
+    |-- example
+    |   `-- welcome.html.ep
+    `-- layouts
+        `-- default.html.ep
+</code></pre>
+
+<h3>mojo generate bootstrap</h3>
+
+<p>Convinient CPAN module is exists for using Twitter BootStrap in Mojolicious, 
+<a href="https://metacpan.org/module/Mojolicious::Command::generate::bootstrap">Mojolicious::Command::generate::bootstrap</a>,
 After module installed by cpanm command, and you can deploy Twitter Bootstrap library into your Mojolicous-App by the command.</p>
-<pre>
-    cpanm Mojolicious::Command::generate::bootstrap
-    cd sample_app_web
-    mojo generate bootstrap
-    
-    sample_app_web/
-    |-- lib
-    |   `-- SampleApp
-    |       |-- Web
-    |       |   `-- Example.pm
-    |       `-- Web.pm
-    |-- log
-    |-- public
-    |   |-- css
-    |   |   `-- bootstrap.min.css
-    |   |-- img
-    |   |   |-- glyphicons-halflings.png
-    |   |   `-- glyphicons-halflings-white.png
-    |   |-- index.html
-    |   `-- js
-    |       `-- bootstrap.min.js
-    |-- script
-    |   `-- sample_app_web
-    |-- t
-    |   `-- basic.t
-    `-- templates
-        |-- example
-        |   `-- welcome.html.ep
-        `-- layouts
-            |-- bootstrap.html.ep
-            `-- default.html.ep</pre>
+
+<pre><code>cpanm Mojolicious::Command::generate::bootstrap
+cd sample_app_web
+mojo generate bootstrap
+
+sample_app_web/
+|-- lib
+|   `-- SampleApp
+|       |-- Web
+|       |   `-- Example.pm
+|       `-- Web.pm
+|-- log
+|-- public
+|   |-- css
+|   |   `-- bootstrap.min.css
+|   |-- img
+|   |   |-- glyphicons-halflings.png
+|   |   `-- glyphicons-halflings-white.png
+|   |-- index.html
+|   `-- js
+|       `-- bootstrap.min.js
+|-- script
+|   `-- sample_app_web
+|-- t
+|   `-- basic.t
+`-- templates
+    |-- example
+    |   `-- welcome.html.ep
+    `-- layouts
+        |-- bootstrap.html.ep
+        `-- default.html.ep
+</code></pre>
+
 <p>Twitter Bootstrap library files is bootstrap.min.css and 2 png files, and bootstrap.min.js file.
-In the directory layouts, bootstrap.html.ep is the layout file that contains bootstrap library paths.
-So you can use bootstrap only by renaming layout section from default to bootstrap.</p>
-<pre>
-    before source</pre>
-<pre>
-    % layout 'default';
-    % title 'Welcome';
-    &lt;h2&gt;&lt;%= $message %&gt;&lt;/h2&gt;
-    This page was generated from the template &quot;templates/example/welcome.html.ep&quot;
-    and the layout &quot;templates/layouts/default.html.ep&quot;,
-    &lt;a href=&quot;&lt;%== url_for %&gt;&quot;&gt;click here&lt;/a&gt; to reload the page or
-    &lt;a href=&quot;/index.html&quot;&gt;here&lt;/a&gt; to move forward to a static page.
-    
-    after source
-    
-    % layout 'bootstrap';
-    % title 'Welcome';
-    &lt;h2&gt;&lt;%= $message %&gt;&lt;/h2&gt;
-    This page was generated from the template &quot;templates/example/welcome.html.ep&quot;
-    and the layout &quot;templates/layouts/default.html.ep&quot;,
-    &lt;a href=&quot;&lt;%== url_for %&gt;&quot;&gt;click here&lt;/a&gt; to reload the page or
-    &lt;a href=&quot;/index.html&quot;&gt;here&lt;/a&gt; to move forward to a static page.</pre>
-</dd>
-</dl>
+In the directory layouts, bootstrap.html.ep is the layout file that contains bootstrap library paths.</p>
 
+<h3>Renaming the layout helper argument</h3>
 
-</body>
+<p>When you want to use Bootstrap, Renaming layout helper argument from default to bootstrap.</p>
 
-</html>
+<pre><code>templates/example/welcome.html.ep
+
+% layout 'default'; # Renaming to bootstrap
+% title 'Welcome';
+</code></pre>
+
+<h3>Build forms by MojoHel and copy code</h3>
+
+<p>Build forms using <a href="http://mojohel.dokechin.com/index.html">MojoHel</a> by drag and drop operations.
+After you create form, select a Rendered(ep) tab, copy the rendered code, paste to your template file.</p>
+
+<h3>Coding form validator logic</h3>
+
+<p>I created sample Mojolicious application in gitbhub. Please refer <a href="https://github.com/dokechin/formapp">This</a>.
+This source includes validator code sample.</p>
+
+<p>MojoHel rendered code contains code to display error messages.</p>
+
+<pre><code>% if ($self-&gt;stash-&gt;{error_messages}) {
+&lt;ul&gt;
+% for my $message ( @{$self-&gt;stash-&gt;{error_messages}} ) {
+&lt;li&gt;&lt;%= $message %&gt;&lt;/li&gt;
+% }
+&lt;/ul&gt;
+</code></pre>
+
+<p>And contains code to notice error's field.</p>
+
+<pre><code>&lt;div class ="control-group &lt;% if ($self-&gt;stash-&gt;{errors} &amp;&amp; $self-&gt;stash-&gt;{errors}-&gt;{"textinput"}) {%&gt;&lt;%= "error" %&gt;&lt;% } %&gt;"&gt;
+</code></pre>
+
+<p>If you set these parameters, error_message array refrence and errors hash refrence in the controller, validator result will be rendered.</p>
