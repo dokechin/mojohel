@@ -99,10 +99,3 @@ form .popover form {
  -ms-user-select: none;
  user-select: none;
 }
-
-#target fieldset{
- width: 100%;
- overflow: hidden;
-}
-
-
